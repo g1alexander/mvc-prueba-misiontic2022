@@ -6,6 +6,9 @@
 package views;
 
 import controllers.Controlador;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import org.json.simple.parser.ParseException;
 
 /**
  *
@@ -248,7 +251,7 @@ public class Main extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) throws IOException, FileNotFoundException, ParseException {
         Main vista = new Main();
         Controlador c = new Controlador(vista);
         vista.setVisible(true);

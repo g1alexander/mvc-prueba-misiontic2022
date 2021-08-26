@@ -7,21 +7,28 @@
 package models;
 
 import config.Connect;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import org.json.simple.parser.ParseException;
 
 /**
  * 
  * @author Alexander Granados <alexander.granados.dev@gmail.com>
  */
 public class PersonaDAO {
-    Connect conexion = new Connect();
+    Connect conexion;
     Connection con;
     PreparedStatement ps;
     ResultSet rs;
+
+    public PersonaDAO() throws IOException, FileNotFoundException, ParseException {
+        this.conexion = new Connect();
+    }
     
     public List listar(){
         List<Persona> datos = new ArrayList<>();

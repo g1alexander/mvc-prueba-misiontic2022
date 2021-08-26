@@ -8,12 +8,15 @@ package controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import models.Persona;
 import models.PersonaDAO;
+import org.json.simple.parser.ParseException;
 import views.Main;
 
 /**
@@ -22,12 +25,13 @@ import views.Main;
  */
 public class Controlador implements ActionListener{
     
-    PersonaDAO dao = new PersonaDAO();
+    PersonaDAO dao;
     Persona p = new Persona();
     Main vista = new Main();
     DefaultTableModel modelo = new DefaultTableModel();
     
-    public Controlador(Main v){
+    public Controlador(Main v) throws IOException, FileNotFoundException, ParseException{
+        this.dao = new PersonaDAO();
         this.vista = v;
         this.vista.btnListar.addActionListener(this);
         this.vista.btnAgregar.addActionListener(this);
